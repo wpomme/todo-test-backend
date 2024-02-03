@@ -5,7 +5,7 @@ INSERT INTO
     , ('03', 'error');
 
 INSERT INTO
-  task (id, description, status_id) VALUES
-      ('01', 'aaa', '01')
-    , ('02', 'bbb', '01')
-    , ('03', 'ccc', '01');
+  task (id, title, description, status_id) VALUES
+      ('01', 'aaa', 'foo', '01')
+    , ('02', 'bbb', 'bar', '01')
+    , ('03', 'ccc', 'baz', '01');

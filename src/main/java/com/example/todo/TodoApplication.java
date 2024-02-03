@@ -15,8 +15,9 @@ public class TodoApplication {
 	@Bean
 	public DataSource dataSource() {
 		EmbeddedDatabase dataSource = new EmbeddedDatabaseBuilder()
-				// Does not it need to add "addScripts"
-				// because schema.sql and data.sql read automatically?
+				// It is needed to add "addScripts"
+				// because schema.sql and data.sql read automatically when executing spring boot.
+				// -- comment out --
 				// .addScripts("schema.sql", "data.sql")
 				.setType(EmbeddedDatabaseType.H2).build();
 		return dataSource;

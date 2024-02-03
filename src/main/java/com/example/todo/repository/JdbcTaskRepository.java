@@ -18,6 +18,7 @@ public class JdbcTaskRepository implements TaskRepository {
         //TODO use template literal or that alternatives
         return jdbcTemplate.query(
                 "SELECT task.id" +
+                        ", task.title" +
                         ", task.description" +
                         ", status.status" +
                         ", task.created_at" +
