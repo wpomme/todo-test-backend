@@ -15,6 +15,15 @@ public class JdbcTaskRepository implements TaskRepository {
     }
     @Override
     public List<TaskDTO> selectAll() {
-        return jdbcTemplate.query("SELECT id, description, status_id, created_at, updated_at FROM task", new DataClassRowMapper<>(TaskDTO.class));
+        //TODO use template literal or that alternatives
+        return jdbcTemplate.query(
+                "SELECT task.id" +
+                        ", task.description" +
+                        ", status.status" +
+                        ", task.created_at" +
+                        ", task.updated_at " +
+                "FROM task " +
+                "JOIN status " +
+                "  ON task.status_id = status.id", new DataClassRowMapper<>(TaskDTO.class));
     }
 }

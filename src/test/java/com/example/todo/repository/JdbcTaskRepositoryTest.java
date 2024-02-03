@@ -28,7 +28,7 @@ public class JdbcTaskRepositoryTest {
     void it_can_select_all_tasks() {
         //TODO create respectable mock for datetime
         LocalDateTime timeMock = LocalDateTime.of(2024, 02, 02, 12, 34, 56);
-        TaskDTO task1 = new TaskDTO("01", "aaa", "01", timeMock, timeMock);
+        TaskDTO task1 = new TaskDTO("01", "aaa", "Active", timeMock, timeMock);
         // TaskDTO task2 = new TaskDTO("02", "bbb", "02");
         List<TaskDTO> taskList = taskRepository.selectAll();
         assertThat(task1.id).isEqualTo(taskList.get(0).id);

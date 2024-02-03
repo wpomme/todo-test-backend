@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
 public class TaskDTO {
     public String id;
     public String description;
-    public String statusId;
+    public String status;
     public LocalDateTime createdAt;
     public LocalDateTime updatedAt;
-    public TaskDTO(String id, String description, String statusId, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public TaskDTO(String id, String description, String status, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.description = description;
-        this.statusId = statusId;
+        this.status = status;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
