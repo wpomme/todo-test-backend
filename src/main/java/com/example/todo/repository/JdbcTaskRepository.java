@@ -27,4 +27,13 @@ public class JdbcTaskRepository implements TaskRepository {
                 "JOIN status " +
                 "  ON task.status_id = status.id", new DataClassRowMapper<>(TaskDTO.class));
     }
+
+    @Override
+    public TaskDTO selectById(String id) {
+        return jdbcTemplate.queryForObject(
+                "SELECT task.id, task.title, task.description, status.status, task.created_at, task.updated_at FROM task JOIN status   ON task.status_id = status.id WHERE task.id = ?",
+                TaskDTO.class,
+                id
+        );
+    }
 }

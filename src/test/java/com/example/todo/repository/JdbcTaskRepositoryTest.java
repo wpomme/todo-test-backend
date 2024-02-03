@@ -32,4 +32,12 @@ public class JdbcTaskRepositoryTest {
         List<TaskDTO> taskList = taskRepository.selectAll();
         assertThat(task1.id).isEqualTo(taskList.get(0).id);
     }
+
+    @Test
+    void it_can_select_a_task_by_id() {
+        LocalDateTime timeMock = LocalDateTime.of(2024, 02, 02, 12, 34, 56);
+        TaskDTO task1 = new TaskDTO("01", "aaa", "foo", "01", timeMock, timeMock);
+        TaskDTO task = taskRepository.selectById("01");
+        assertThat(task1.id).isEqualTo(task.id);
+    }
 }

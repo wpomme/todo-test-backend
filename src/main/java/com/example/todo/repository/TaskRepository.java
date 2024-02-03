@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TaskRepository {
     List<TaskDTO> selectAll();
+    TaskDTO selectById(String id);
 }
