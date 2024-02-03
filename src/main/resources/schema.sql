@@ -1,11 +1,13 @@
 CREATE TABLE IF NOT EXISTS status (
-    status_id VARCHAR(32) PRIMARY KEY,
-    status_name VARCHAR(32)
+    id VARCHAR(32) PRIMARY KEY,
+    status VARCHAR(32)
 );
 
 CREATE TABLE IF NOT EXISTS task (
-    task_id VARCHAR(32) PRIMARY KEY,
+    id VARCHAR(32) PRIMARY KEY,
     description VARCHAR(1024),
     status_id VARCHAR(32),
-    FOREIGN KEY (status_id) REFERENCES status(status_id)
+    -- created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    -- updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (status_id) REFERENCES status(id)
 );

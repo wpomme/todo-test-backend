@@ -1,11 +1,8 @@
 package com.example.todo.controller;
 
 import com.example.todo.DTO.TaskDTO;
-import com.example.todo.entity.Task;
-import com.example.todo.service.TaskListImpl;
 import com.example.todo.service.TaskService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

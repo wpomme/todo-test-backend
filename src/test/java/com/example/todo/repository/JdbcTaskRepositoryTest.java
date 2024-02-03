@@ -28,6 +28,6 @@ public class JdbcTaskRepositoryTest {
         TaskDTO task1 = new TaskDTO("01", "aaa", "01");
         // TaskDTO task2 = new TaskDTO("02", "bbb", "02");
         List<TaskDTO> taskList = taskRepository.selectAll();
-        assertThat(task1.taskId).isEqualTo(taskList.get(0).taskId);
+        assertThat(task1.id).isEqualTo(taskList.get(0).id);
     }
 }
