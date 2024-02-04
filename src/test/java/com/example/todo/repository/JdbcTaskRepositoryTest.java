@@ -40,4 +40,18 @@ public class JdbcTaskRepositoryTest {
         TaskDTO task = taskRepository.selectById("01");
         assertThat(task1.id).isEqualTo(task.id);
     }
+
+    @Test
+    void it_can_update_a_task_selected_by_id() {
+        TaskDTO task = taskRepository.selectById("01");
+        // Modify task.title and task.description
+        task.title = "Modified by test";
+        task.description = "description test";
+        int count = taskRepository.update(task);
+        // Express SUCCESS when count is 1
+        if (count == 1) {
+            TaskDTO modifiedTask = taskRepository.selectById("01");
+            assertThat(modifiedTask.title).isEqualTo("Modified by test");
+        }
+    }
 }
