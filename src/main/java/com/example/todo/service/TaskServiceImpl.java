@@ -3,9 +3,11 @@ package com.example.todo.service;
 import com.example.todo.DTO.TaskDTO;
 import com.example.todo.DTO.TaskInput;
 import com.example.todo.repository.TaskRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 
