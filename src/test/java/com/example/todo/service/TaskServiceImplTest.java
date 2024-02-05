@@ -21,8 +21,11 @@ public class TaskServiceImplTest {
 
     @Test
     void it_can_edit_a_task() {
-        TaskInput taskInput = new TaskInput("Modified Title", "Modified Description");
-        taskService.edit("01", taskInput);
+        TaskInput taskInput = new TaskInput();
+        taskInput.setId("01");
+        taskInput.setTitle("Modified Title");
+        taskInput.setDescription("Modified Description");
+        taskService.edit(taskInput);
         verify(taskRepository).update(any());
     }
 }

@@ -1,10 +1,12 @@
 package com.example.todo.controller;
 
 import com.example.todo.DTO.TaskDTO;
+import com.example.todo.DTO.TaskInput;
 import com.example.todo.service.TaskService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,4 +23,15 @@ public class TaskController {
         return ResponseEntity
                 .ok()
                 .body(taskList);
-    }}
+    }
+
+    @PutMapping("/tasks/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void editTask(
+            @PathVariable String id,
+            @Validated @RequestBody TaskInput taskInput
+            ) {
+        taskInput.setId(id);
+        taskService.edit(taskInput);
+    }
+}

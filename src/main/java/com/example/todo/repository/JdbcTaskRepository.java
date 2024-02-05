@@ -1,6 +1,7 @@
 package com.example.todo.repository;
 
 import com.example.todo.DTO.TaskDTO;
+import com.example.todo.DTO.TaskInput;
 import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -40,15 +41,15 @@ public class JdbcTaskRepository implements TaskRepository {
 
     //TODO make update query for status later
     @Override
-    public int update(TaskDTO task) {
+    public int update(TaskInput taskInput) {
         //TODO Think of better way to generate current time
         LocalDateTime now = LocalDateTime.now();
         return jdbcTemplate.update(
                 "UPDATE task SET title = ?, description = ?, updated_at = ? WHERE id = ?",
-                task.getTitle(),
-                task.getDescription(),
+                taskInput.getTitle(),
+                taskInput.getDescription(),
                 now,
-                task.getId()
+                taskInput.getId()
         );
     }
 }

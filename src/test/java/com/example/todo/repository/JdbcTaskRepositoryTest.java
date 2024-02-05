@@ -1,6 +1,7 @@
 package com.example.todo.repository;
 
 import com.example.todo.DTO.TaskDTO;
+import com.example.todo.DTO.TaskInput;
 import com.example.todo.entity.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,11 +40,14 @@ public class JdbcTaskRepositoryTest {
 
     @Test
     void it_can_update_a_task_selected_by_id() {
-        TaskDTO task = taskRepository.selectById("01");
+        String taskId = "01";
+        TaskDTO task = taskRepository.selectById(taskId);
         // Modify task.title and task.description
-        task.setTitle("Modified by test");
-        task.setDescription("description test");
-        int count = taskRepository.update(task);
+        TaskInput taskInput = new TaskInput();
+        taskInput.setId(taskId);
+        taskInput.setTitle("Modified by test");
+        taskInput.setDescription("description test");
+        int count = taskRepository.update(taskInput);
         // Express SUCCESS when count is 1
         if (count == 1) {
             TaskDTO modifiedTask = taskRepository.selectById("01");

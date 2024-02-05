@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TaskService {
     List<TaskDTO> todo();
-    int edit(String taskId, TaskInput taskInput);
+    int edit(TaskInput taskInput);
 }

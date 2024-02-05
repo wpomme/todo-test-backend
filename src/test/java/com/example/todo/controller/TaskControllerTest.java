@@ -8,6 +8,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,9 +26,9 @@ public class TaskControllerTest {
 
     @Test
     void it_can_get_tasks() throws Exception {
-        TaskDTO task = new TaskDTO();
-        task.setId("01");
-        doReturn(task).when(taskService).todo();
+        TaskDTO task1 = new TaskDTO();
+        task1.setId("01");
+        doReturn(List.of(task1)).when(taskService).todo();
 
         mockMvc.perform(
                 get("/tasks")

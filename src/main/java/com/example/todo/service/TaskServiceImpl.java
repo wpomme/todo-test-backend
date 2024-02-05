@@ -20,10 +20,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public int edit(String taskId, TaskInput taskInput) {
-        TaskDTO task = taskRepository.selectById(taskId);
-        task.title = taskInput.title;
-        task.description = taskInput.description;
-        return taskRepository.update(task);
+    public int edit(TaskInput taskInput) {
+        // TaskDTO task = taskRepository.selectById(taskInput.getId());
+        return taskRepository.update(taskInput);
     }
 }
