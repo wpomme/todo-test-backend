@@ -3,6 +3,7 @@ package com.example.todo.repository;
 import com.example.todo.DTO.TaskDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TaskRepository {
     List<TaskDTO> selectAll();

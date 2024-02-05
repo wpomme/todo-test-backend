@@ -27,31 +27,27 @@ public class JdbcTaskRepositoryTest {
     @Test
     void it_can_select_all_tasks() {
         //TODO create respectable mock for datetime
-        LocalDateTime timeMock = LocalDateTime.of(2024, 02, 02, 12, 34, 56);
-        TaskDTO task1 = new TaskDTO("01", "aaa", "foo", "01", timeMock, timeMock);
         List<TaskDTO> taskList = taskRepository.selectAll();
-        assertThat(task1.id).isEqualTo(taskList.get(0).id);
+        assertThat("01").isEqualTo(taskList.get(0).getId());
     }
 
     @Test
     void it_can_select_a_task_by_id() {
-        LocalDateTime timeMock = LocalDateTime.of(2024, 02, 02, 12, 34, 56);
-        TaskDTO task1 = new TaskDTO("01", "aaa", "foo", "01", timeMock, timeMock);
         TaskDTO task = taskRepository.selectById("01");
-        assertThat(task1.id).isEqualTo(task.id);
+        assertThat("01").isEqualTo(task.getId());
     }
 
     @Test
     void it_can_update_a_task_selected_by_id() {
         TaskDTO task = taskRepository.selectById("01");
         // Modify task.title and task.description
-        task.title = "Modified by test";
-        task.description = "description test";
+        task.setTitle("Modified by test");
+        task.setDescription("description test");
         int count = taskRepository.update(task);
         // Express SUCCESS when count is 1
         if (count == 1) {
             TaskDTO modifiedTask = taskRepository.selectById("01");
-            assertThat(modifiedTask.title).isEqualTo("Modified by test");
+            assertThat(modifiedTask.getTitle()).isEqualTo("Modified by test");
         }
     }
 }

@@ -33,22 +33,22 @@ public class JdbcTaskRepository implements TaskRepository {
     public TaskDTO selectById(String id) {
         return jdbcTemplate.queryForObject(
                 "SELECT task.id, task.title, task.description, status.status, task.created_at, task.updated_at FROM task JOIN status   ON task.status_id = status.id WHERE task.id = ?",
-                TaskDTO.class,
+                new DataClassRowMapper<>(TaskDTO.class),
                 id
         );
     }
 
+    //TODO make update query for status later
     @Override
     public int update(TaskDTO task) {
         //TODO Think of better way to generate current time
         LocalDateTime now = LocalDateTime.now();
         return jdbcTemplate.update(
-                "UPDATE task SET title = ?, description = ?, status = ?, updated_at = ? WHERE id = ?",
-                task.title,
-                task.description,
-                task.status,
+                "UPDATE task SET title = ?, description = ?, updated_at = ? WHERE id = ?",
+                task.getTitle(),
+                task.getDescription(),
                 now,
-                task.id
+                task.getId()
         );
     }
 }
