@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -42,13 +41,10 @@ public class JdbcTaskRepository implements TaskRepository {
     //TODO make update query for status later
     @Override
     public int update(TaskInput taskInput) {
-        //TODO Think of better way to generate current time
-        LocalDateTime now = LocalDateTime.now();
         return jdbcTemplate.update(
-                "UPDATE task SET title = ?, description = ?, updated_at = ? WHERE id = ?",
+                "UPDATE task SET title = ?, description = ? WHERE id = ?",
                 taskInput.getTitle(),
                 taskInput.getDescription(),
-                now,
                 taskInput.getId()
         );
     }
