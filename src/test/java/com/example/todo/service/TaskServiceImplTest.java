@@ -44,6 +44,12 @@ public class TaskServiceImplTest {
         taskInput.setTitle("Modified Title");
         taskInput.setDescription("Modified Description");
         taskService.edit(taskInput);
-        verify(taskRepository).update(any());
+        verify(taskRepository).updateById(any());
+    }
+
+    @Test
+    void it_can_create_a_task() {
+        taskService.create("title", "description");
+        verify(taskRepository).create(any());
     }
 }

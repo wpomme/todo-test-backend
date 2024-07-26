@@ -31,7 +31,7 @@ public class JdbcTaskRepository implements TaskRepository {
     }
 
     @Override
-    public void update(TaskInput taskInput) {
+    public void updateById(TaskInput taskInput) {
         jdbcTemplate.update(
                 "UPDATE task SET title = ?, description = ? WHERE id = ?",
                 taskInput.getTitle(),

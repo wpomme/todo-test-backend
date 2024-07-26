@@ -5,8 +5,8 @@ import com.example.todo.DTO.TaskInput;
 import com.example.todo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -22,6 +22,16 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void edit(TaskInput taskInput) {
-        taskRepository.update(taskInput);
+        taskRepository.updateById(taskInput);
+    }
+
+    public void create(String title, String description) {
+        UUID uuid = UUID.randomUUID();
+        TaskInput taskInput = new TaskInput();
+        //FIXME Fix to not change uuid's type
+        taskInput.setId(uuid.toString());
+        taskInput.setTitle(title);
+        taskInput.setDescription(description);
+        taskRepository.create(taskInput);
     }
 }

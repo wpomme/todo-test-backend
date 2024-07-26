@@ -8,7 +8,7 @@ import java.util.List;
 public interface TaskRepository {
     List<TaskDTO> selectAll();
     TaskDTO selectById(String id);
-    void update(TaskInput taskInput);
+    void updateById(TaskInput taskInput);
     void create(TaskInput taskInput);
     void deleteById(String id);
 }

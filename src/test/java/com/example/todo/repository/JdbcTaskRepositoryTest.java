@@ -38,7 +38,7 @@ public class JdbcTaskRepositoryTest {
     }
 
     @Test
-    void it_can_update_a_task_selected_by_id() {
+    void it_can_update_ById_a_task_selected_by_id() {
         String taskId = "01";
         String taskTitle = "Modified by test";
         // Modify task.title and task.description
@@ -46,7 +46,7 @@ public class JdbcTaskRepositoryTest {
         taskInput.setId(taskId);
         taskInput.setTitle(taskTitle);
         taskInput.setDescription("description test");
-        taskRepository.update(taskInput);
+        taskRepository.updateById(taskInput);
         TaskDTO modifiedTask = taskRepository.selectById(taskId);
         assertThat(modifiedTask.getTitle()).isEqualTo(taskTitle);
     }
