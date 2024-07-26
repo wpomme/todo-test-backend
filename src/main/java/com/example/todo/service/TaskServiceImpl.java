@@ -5,6 +5,7 @@ import com.example.todo.DTO.TaskInput;
 import com.example.todo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -20,8 +21,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public int edit(TaskInput taskInput) {
-        // TaskDTO task = taskRepository.selectById(taskInput.getId());
-        return taskRepository.update(taskInput);
+    public void edit(TaskInput taskInput) {
+        taskRepository.update(taskInput);
     }
 }

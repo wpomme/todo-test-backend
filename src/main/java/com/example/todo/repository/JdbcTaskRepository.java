@@ -30,14 +30,24 @@ public class JdbcTaskRepository implements TaskRepository {
         );
     }
 
-    //TODO make update query for status later
     @Override
-    public int update(TaskInput taskInput) {
-        return jdbcTemplate.update(
+    public void update(TaskInput taskInput) {
+        jdbcTemplate.update(
                 "UPDATE task SET title = ?, description = ? WHERE id = ?",
                 taskInput.getTitle(),
                 taskInput.getDescription(),
                 taskInput.getId()
+        );
+    }
+
+    @Override
+    public void create(TaskInput taskInput) {
+        jdbcTemplate.update(
+                "INSERT INTO task (id, title, description) VALUES (?, ?, ?)",
+                //TODO make id auto generated
+                taskInput.getId(),
+                taskInput.getTitle(),
+                taskInput.getDescription()
         );
     }
 }

@@ -10,5 +10,6 @@ public interface TaskRepository {
     List<TaskDTO> selectAll();
     TaskDTO selectById(String id);
     //TODO Fix to return something like "Success" | "Failed"
-    int update(TaskInput taskInput);
+    void update(TaskInput taskInput);
+    void create(TaskInput taskInput);
 }

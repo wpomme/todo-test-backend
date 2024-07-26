@@ -39,17 +39,27 @@ public class JdbcTaskRepositoryTest {
     @Test
     void it_can_update_a_task_selected_by_id() {
         String taskId = "01";
-        TaskDTO task = taskRepository.selectById(taskId);
+        String taskTitle = "Modified by test";
         // Modify task.title and task.description
         TaskInput taskInput = new TaskInput();
         taskInput.setId(taskId);
-        taskInput.setTitle("Modified by test");
+        taskInput.setTitle(taskTitle);
         taskInput.setDescription("description test");
-        int count = taskRepository.update(taskInput);
-        // Express SUCCESS when count is 1
-        if (count == 1) {
-            TaskDTO modifiedTask = taskRepository.selectById("01");
-            assertThat(modifiedTask.getTitle()).isEqualTo("Modified by test");
-        }
+        taskRepository.update(taskInput);
+        TaskDTO modifiedTask = taskRepository.selectById(taskId);
+        assertThat(modifiedTask.getTitle()).isEqualTo(taskTitle);
+    }
+
+    @Test
+    void it_can_create_a_task() {
+        String taskId = "test01";
+        String taskTitle = "Created by test";
+        TaskInput taskInput = new TaskInput();
+        taskInput.setId(taskId);
+        taskInput.setTitle(taskTitle);
+        taskInput.setDescription("Description Created by test");
+        taskRepository.create(taskInput);
+        TaskDTO createdTask = taskRepository.selectById(taskId);
+        assertThat(createdTask.getTitle()).isEqualTo(taskTitle);
     }
 }
