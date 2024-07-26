@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -61,5 +62,17 @@ public class JdbcTaskRepositoryTest {
         taskRepository.create(taskInput);
         TaskDTO createdTask = taskRepository.selectById(taskId);
         assertThat(createdTask.getTitle()).isEqualTo(taskTitle);
+    }
+
+    @Test
+    void it_can_delete_a_task() {
+        String taskId = "01";
+        taskRepository.deleteById(taskId);
+
+        try {
+            taskRepository.selectById(taskId);
+        } catch (RuntimeException ex) {
+            assertThat(ex).isInstanceOf(EmptyResultDataAccessException.class);
+        }
     }
 }

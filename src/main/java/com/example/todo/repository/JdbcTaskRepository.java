@@ -50,4 +50,11 @@ public class JdbcTaskRepository implements TaskRepository {
                 taskInput.getDescription()
         );
     }
+
+    public void deleteById(String id) {
+        jdbcTemplate.update(
+                "DELETE FROM task WHERE id = ?",
+                id
+        );
+    }
 }
