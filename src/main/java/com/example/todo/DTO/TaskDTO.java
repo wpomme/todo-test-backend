@@ -1,13 +1,11 @@
 package com.example.todo.DTO;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TaskDTO {
     private String id;
     private String title;
     private String description;
-    private String status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -33,14 +31,6 @@ public class TaskDTO {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public LocalDateTime getCreatedAt() {

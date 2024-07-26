@@ -2,7 +2,6 @@ package com.example.todo.repository;
 
 import com.example.todo.DTO.TaskDTO;
 import com.example.todo.DTO.TaskInput;
-import com.example.todo.entity.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @JdbcTest
