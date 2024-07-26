@@ -52,4 +52,10 @@ public class TaskServiceImplTest {
         taskService.create("title", "description");
         verify(taskRepository).create(any());
     }
+
+    @Test
+    void it_can_delete_a_task() {
+        taskService.delete("01");
+        verify(taskRepository).deleteById(any());
+    }
 }

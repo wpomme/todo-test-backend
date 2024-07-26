@@ -8,4 +8,6 @@ import java.util.List;
 public interface TaskService {
     List<TaskDTO> todo();
     void edit(TaskInput taskInput);
+    TaskDTO create(String title, String description);
+    void delete(String id);
 }

@@ -25,7 +25,8 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.updateById(taskInput);
     }
 
-    public void create(String title, String description) {
+    @Override
+    public TaskDTO create(String title, String description) {
         UUID uuid = UUID.randomUUID();
         TaskInput taskInput = new TaskInput();
         //FIXME Fix to not change uuid's type
@@ -33,5 +34,11 @@ public class TaskServiceImpl implements TaskService {
         taskInput.setTitle(title);
         taskInput.setDescription(description);
         taskRepository.create(taskInput);
+        return taskRepository.selectById(uuid.toString());
+    }
+
+    @Override
+    public void delete(String id) {
+        taskRepository.deleteById(id);
     }
 }
