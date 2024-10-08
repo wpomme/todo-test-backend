@@ -1,7 +1,9 @@
 package com.example.todo.DTO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.lang.NonNull;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TaskInput {
     private String id;
     @NonNull
